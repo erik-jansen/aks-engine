@@ -16,8 +16,8 @@ then
     ip=\$(ip address show eth0 | awk '/inet / {print \$2}' | cut -d/ -f1)
     host=\$(hostname -s)
     nsupdatecmds=/var/tmp/nsupdatecmds
-    echo "server ns1.${DOMAINNAME}" >> \$nsupdatecmds
-    echo "update delete \${host}.${DOMAINNAME} a" > \$nsupdatecmds
+    echo "server ns1.${DOMAINNAME}" > \$nsupdatecmds
+    echo "update delete \${host}.${DOMAINNAME} a" >> \$nsupdatecmds
     echo "update add \${host}.${DOMAINNAME} 3600 a \${ip}" >> \$nsupdatecmds
     echo "send" >> \$nsupdatecmds
 
